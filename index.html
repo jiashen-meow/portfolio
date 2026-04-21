@@ -384,7 +384,7 @@
   <p class="section-label fade-in">精选项目</p>
   <div class="project-list">
 
-    <div class="project-item fade-in" onclick="alert('https://tcn0tlzefkvl.feishu.cn/wiki/QTGWw3yJkiODI9k06EbcNVldnhe?from=from_copylink')">
+    <div class="project-item fade-in" onclick="window.open('https://tcn0tlzefkvl.feishu.cn/wiki/QTGWw3yJkiODI9k06EbcNVldnhe?from=from_copylink', '_blank')">
       <div>
         <h3>Crumbie（视频素材整理工具）</h3>
         <p>一款 macOS 工具，通过 AI 视觉模型自动重命名和标注多设备旅拍素材，将原本 2-3 小时的手动整理工作压缩至 10 分钟以内。</p>
@@ -404,7 +404,7 @@
   <p class="section-label fade-in">文章</p>
   <div class="post-list">
 
-    <div class="post-item fade-in" onclick="alert('https://mp.weixin.qq.com/s/9s3wJb6XYZdbgjORPu5PLA')">
+    <div class="post-item fade-in" onclick="window.open('https://mp.weixin.qq.com/s/9s3wJb6XYZdbgjORPu5PLA', '_blank')">
       <span class="post-title">做了3年建筑科技产品，我学到的关于PMF的几个教训</span>
       <div class="post-right">
         <span class="post-tag">房产科技</span>
@@ -424,7 +424,8 @@
   <div class="contact-links fade-in">
     <a class="contact-link" href="mailto:jia-sh@hotmail.com">✉ 邮件</a>
     <a class="contact-link" href="https://www.linkedin.com/in/jiadaisyshen/" target="_blank">LinkedIn</a>
-    <a class="contact-link" href="https://twitter.com/yourhandle" target="_blank">Wechat / X</a>
+    <span class="contact-link" id="wechat-btn" onclick="copyWechat()" style="cursor:pointer;" title="点击复制微信号">💬 微信</span>
+    <span id="wechat-tip" style="font-size:.8rem;color:var(--accent);align-self:center;opacity:0;transition:opacity .3s;">已复制！</span>
     <a class="contact-link" href="https://github.com/jiashen-meow" target="_blank">GitHub</a>
   </div>
 </section>
@@ -435,6 +436,14 @@
 </footer>
 
 <script>
+  function copyWechat() {
+    navigator.clipboard.writeText('jiashen0510').then(() => {
+      const tip = document.getElementById('wechat-tip');
+      tip.style.opacity = 1;
+      setTimeout(() => tip.style.opacity = 0, 2000);
+    });
+  }
+  
   // Nav scroll shadow
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
